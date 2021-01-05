@@ -1,0 +1,48 @@
+class Paper{
+    constructor(x,y,r){
+       var options = {
+           isStatic: false,
+           restitution: 0.3,   
+           friction:0.5,
+           density:1.3
+       }
+       this.x = x
+       this.y = y
+       this.r = r
+       this.body = Bodies.circle(this.x,this.y,this.r/2,options)
+       this.image = loadImage("paper.png")
+       World.add(world,this.body)
+    }
+    display(){
+    var pos =this.body.position;
+    var angle = this.body.angle;
+    push();
+    translate(pos.x, pos.y);
+    rotate(angle);
+  //  ellipseMode(RADIUS)
+    fill(255,0,255)
+   // ellipse(0,0,this.r,this.r);    //why r instead of r/2?
+/*
+     if (pos.x < 100 || pos.x > 500)
+      {
+        imageMode(CENTER)
+        image(this.image,0,0,this.r,this.r)
+      }
+      else if (pos.x >= 100 && pos.x <= 500)
+      {
+        if (pos.y > 100)
+        {
+          imageMode(CENTER)
+          image(this.image,0,0,this.r,this.r)  
+        }
+      }
+      else
+      {
+        imageMode(close);
+      }
+*/      
+   imageMode(CENTER)
+   image(this.image,0,0,this.r,this.r)
+    pop();
+    }
+}
